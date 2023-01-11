@@ -175,6 +175,11 @@ _G.packer_plugins = {
     path = "C:\\Users\\Craig\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\undotree",
     url = "https://github.com/mbbill/undotree"
   },
+  ["vim-be-good"] = {
+    loaded = true,
+    path = "C:\\Users\\Craig\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-be-good",
+    url = "https://github.com/ThePrimeagen/vim-be-good"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "C:\\Users\\Craig\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-fugitive",
