@@ -10,6 +10,16 @@ lsp.ensure_installed({
   'rust_analyzer',
 })
 
+lsp.configure('sumneko_lua', {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { 'vim' }
+            }
+        }
+    }
+})
+
 local cmp = require('cmp')
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
 local cmp_mappings = lsp.defaults.cmp_mappings({
@@ -44,3 +54,6 @@ end)
 
 lsp.setup()
 
+vim.diagnostic.config({
+    virtual_text = true,
+})
