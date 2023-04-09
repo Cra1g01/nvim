@@ -47,4 +47,10 @@ return require('packer').startup(function(use)
   }
 
   use('ThePrimeagen/vim-be-good')
+  use {
+      'numToStr/Comment.nvim',
+      config = function()
+          require('Comment').setup()
+      end
+  }
 end)
