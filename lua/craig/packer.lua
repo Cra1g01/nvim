@@ -55,6 +55,15 @@ return require("packer").startup(function(use)
 	  }
   }
 
+  use {
+      "folke/trouble.nvim",
+      config = function()
+          require("trouble").setup {
+              icons = false,
+          }
+      end
+  }
+
   use { "ThePrimeagen/vim-be-good" }
   use {
       "numToStr/Comment.nvim",
