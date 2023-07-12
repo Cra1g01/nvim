@@ -1,19 +1,22 @@
 vim.cmd.packadd("packer.nvim")
 
 return require("packer").startup(function(use)
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim" }
+
+  use { "rose-pine/neovim", as = "rose-pine" }
+  use { "ellisonleao/gruvbox.nvim" }
+  use { "EdenEast/nightfox.nvim" }
+  use { "marko-cerovac/material.nvim" }
+  use { "projekt0n/github-nvim-theme" }
+
+  -- use {
+  --     "nvim-lualine/lualine.nvim",
+  --     requires = { "nvim-tree/nvim-web-devicons", opt = true }
+  -- }
 
   use {
-	  "nvim-telescope/telescope.nvim", tag = "0.1.0",
-	  requires = { {"nvim-lua/plenary.nvim"} }
-  }
-
-  use {
-	  "rose-pine/neovim",
-	  as = "rose-pine",
-	  config = function()
-		  vim.cmd("colorscheme rose-pine")
-	  end
+      "nvim-telescope/telescope.nvim", tag = "0.1.0",
+      requires = { {"nvim-lua/plenary.nvim"} }
   }
 
   use {
@@ -24,11 +27,11 @@ return require("packer").startup(function(use)
       end
   }
 
-  use("nvim-treesitter/playground")
-  use("theprimeagen/harpoon")
-  use("mbbill/undotree")
-  use("tpope/vim-fugitive")
-  use("nvim-treesitter/nvim-treesitter-context")
+  use { "nvim-treesitter/playground" }
+  use { "theprimeagen/harpoon" }
+  use { "mbbill/undotree" }
+  use { "tpope/vim-fugitive" }
+  use { "nvim-treesitter/nvim-treesitter-context" }
 
   use {
 	  "VonHeikemen/lsp-zero.nvim",
@@ -52,7 +55,7 @@ return require("packer").startup(function(use)
 	  }
   }
 
-  use("ThePrimeagen/vim-be-good")
+  use { "ThePrimeagen/vim-be-good" }
   use {
       "numToStr/Comment.nvim",
       config = function()
