@@ -4,10 +4,10 @@ return require("packer").startup(function(use)
   use { "wbthomason/packer.nvim" }
 
   use { "rose-pine/neovim", as = "rose-pine" }
-  use { "ellisonleao/gruvbox.nvim" }
-  use { "EdenEast/nightfox.nvim" }
-  use { "marko-cerovac/material.nvim" }
-  use { "projekt0n/github-nvim-theme" }
+  -- use { "ellisonleao/gruvbox.nvim" }
+  -- use { "EdenEast/nightfox.nvim" }
+  -- use { "marko-cerovac/material.nvim" }
+  -- use { "projekt0n/github-nvim-theme" }
 
   -- use {
   --     "nvim-lualine/lualine.nvim",
