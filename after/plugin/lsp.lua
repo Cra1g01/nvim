@@ -49,3 +49,12 @@ lsp.setup()
 vim.diagnostic.config({
     virtual_text = true,
 })
+
+local on_attach = function(client, bufnr)
+  -- Use Pyright for hover instead of ruff
+  client.server_capabilities.hoverProvider = false
+end
+
+require("lspconfig").ruff_lsp.setup {
+  on_attach = on_attach,
+}
