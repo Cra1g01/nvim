@@ -2,9 +2,8 @@ require("craig.remap")
 require("craig.set")
 
 local augroup = vim.api.nvim_create_augroup
-local Main_Group = augroup("Main_Group", {})
-
 local autocmd = vim.api.nvim_create_autocmd
+
 local yank_group = augroup("HighlightYank", {})
 
 function R(name)
@@ -20,12 +19,6 @@ autocmd("TextYankPost", {
             timeout = 40,
         })
     end,
-})
-
-autocmd({"BufWritePre"}, {
-    group = Main_Group,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
 })
 
 vim.g.netrw_browse_split = 0
