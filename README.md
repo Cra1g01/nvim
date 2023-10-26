@@ -4,7 +4,7 @@ This is my Lua Neovim config.
 
 ## Install
 >Prerequisites:
-> - neovim v0.10.0
+> - neovim v0.9.1
 > - ripgrep
 
 With the prerequisites installed, clone this repository into `~/.config`.
