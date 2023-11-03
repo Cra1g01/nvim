@@ -1,18 +1,13 @@
-require("rose-pine").setup({
-	disable_background = true,
-})
-
--- require("material.functions").change_style("deep ocean")
-
-function SetBackground(color)
-	color = color or "rose-pine"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
-
-SetBackground()
+return {
+    "rose-pine/neovim",
+    priority = 1000,
+    config = function()
+        require("rose-pine").setup({
+            disable_background = true,
+        })
+        vim.cmd.colorscheme("rose-pine")
+    end,
+}
 
 -- rose-pine
 -- - main
