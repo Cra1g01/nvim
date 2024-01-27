@@ -11,6 +11,7 @@ autocmd("Filetype", {
         "html", "xml",
         "css", "scss",
         "javascript", "typescript",
+        "javascriptreact", "typescriptreact",
         "svelte",
         "yaml",
     },
@@ -22,7 +23,10 @@ local formatters_group = augroup("Formatters", {})
 
 local formatters = {
     ["javascript"] = "formatter.prettier",
+    ["javascriptreact"] = "formatter.prettier",
+    ["svelte"] = "formatter.prettier",
     ["typescript"] = "formatter.prettier",
+    ["typescriptreact"] = "formatter.prettier",
     ["python"] = "formatter.black",
 }
 

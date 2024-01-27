@@ -8,6 +8,8 @@ return {
             ["python"] = true,
             ["javascript"] = true,
             ["typescript"] = true,
+            ["javascriptreact"] = true,
+            ["typescriptreact"] = true,
             ["go"] = true,
             ["rust"] = true,
             ["css"] = true,
@@ -16,6 +18,7 @@ return {
             ["cpp"] = true,
             ["r"] = true,
             ["json"] = true,
+            ["svelte"] = true,
         }
     end,
 }
