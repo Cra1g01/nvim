@@ -19,6 +19,7 @@ return {
             ["r"] = true,
             ["json"] = true,
             ["svelte"] = true,
+            ["lua"] = true,
         }
     end,
 }
