@@ -1,12 +1,25 @@
+function SetColorSchemeRP()
+  require("rose-pine").setup({
+      disable_background = false,
+  })
+  vim.cmd.colorscheme("rose-pine")
+  vim.notify "Setting colour scheme to Rose Pine"
+end
+
+function SetColorSchemeRPNB()
+  require("rose-pine").setup({
+      disable_background = true,
+  })
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  vim.cmd.colorscheme("rose-pine")
+  vim.notify "Setting colour scheme to Rose Pine with no background"
+end
+
 return {
-    "rose-pine/neovim",
-    priority = 1000,
-    config = function()
-        require("rose-pine").setup({
-            disable_background = true,
-        })
-        vim.cmd.colorscheme("rose-pine")
-    end,
+  "rose-pine/neovim",
+  priority = 1000,
+  config = SetColorSchemeRP,
 }
 
 -- rose-pine
