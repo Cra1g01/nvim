@@ -3,9 +3,9 @@
 This is my Lua Neovim config.
 
 ## Install
->Prerequisites:
-> - neovim v0.9.1
-> - ripgrep
+Prerequisites:
+ - neovim v0.9.1
+ - ripgrep
 
 With the prerequisites installed, clone this repository into `~/.config`.
 
@@ -23,9 +23,9 @@ Mason manages LSPs, Linters, Formatters, etc.
 
 lsp-zero is used for LSP integration.
 
-lua_ls, pyright, rust_analyzer and tsserver are installed by default.
+A number of lsps are installed are installed by default. See `lua/craig/plugins/lsp.lua`.
 
 See [mason.nvim](https://github.com/williamboman/mason.nvim) for more info.
 
 ---------------------
-Credit to ThePrimeagen for the bulk of this config!
+Credit to ThePrimeagen and teej_dv for the bulk of my original config!
