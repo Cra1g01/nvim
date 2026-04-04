@@ -4,6 +4,7 @@ return {
     event = "VeryLazy",
     config = function()
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git);
+        vim.keymap.set("n", "<leader>gl", ":Git log<CR>");
 
         local Fugitive_Group = vim.api.nvim_create_augroup("Fugitive_Group", {})
 
