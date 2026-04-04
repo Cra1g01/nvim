@@ -36,3 +36,6 @@ vim.keymap.set("n", "<leader>sx", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>x", "<cmd>source %<CR>")
 vim.keymap.set("n", "<leader>x", ":.lua<CR>")
 vim.keymap.set("v", "<leader>x", ":lua<CR>")
+
+vim.keymap.set("n", "<leader>pc", "<cmd>!uvx pre-commit run<CR>")
+vim.keymap.set("n", "<leader>pca", "<cmd>!uvx pre-commit run -a<CR>")
