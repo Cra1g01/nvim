@@ -1,29 +1,47 @@
 return {
-    {
-        "nvim-treesitter/nvim-treesitter",
-        build = ":TSUpdate",
-        config = function()
-            require("nvim-treesitter.configs").setup({
-                sync_install = false,
-                auto_install = true,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                indent = { enable = true },
-                ensure_installed = {
-                    "c",
-                    "go",
-                    "javascript",
-                    "lua",
-                    "python",
-                    "rust",
-                    "typescript",
-                    "vimdoc",
-                },
-            })
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    lazy = false,
+    build = ":TSUpdate",
+    config = function()
+      local ts = require("nvim-treesitter")
+
+      vim.treesitter.language.register("vimdoc", { "help" })
+
+      local available = {}
+      for _, l in ipairs(ts.get_available()) do
+        available[l] = true
+      end
+
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("TSMainAuto", { clear = true }),
+        pattern = "*",
+        callback = function(args)
+          local buf = args.buf
+          local ft = vim.bo[buf].filetype
+          local lang = vim.treesitter.language.get_lang(ft)
+          if not lang or not available[lang] then
+            return
+          end
+
+          if vim.treesitter.language.add(lang) then
+            vim.treesitter.start(buf, lang)
+            return
+          end
+
+          local ok, task = pcall(ts.install, { lang })
+          if ok and task and task.wait then
+            task:wait(30000)
+            if vim.treesitter.language.add(lang) then
+              vim.treesitter.start(buf, lang)
+            end
+          end
         end,
-    },
-    { "nvim-treesitter/playground" },
-    { "nvim-treesitter/nvim-treesitter-context" },
+      })
+
+      vim.keymap.set("n", "tsc", "<cmd>TSContext toggle<CR>")
+    end,
+  },
+  { "nvim-treesitter/nvim-treesitter-context" },
 }
