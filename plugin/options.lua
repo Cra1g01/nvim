@@ -12,6 +12,7 @@ vim.opt.wrap = false
 
 vim.opt.swapfile = false
 vim.opt.backup = false
+vim.opt.spellfile = (os.getenv("HOME") or os.getenv("USERPROFILE")) .. "/.vim/spell/en.utf-8.add"
 vim.opt.undodir = (os.getenv("HOME") or os.getenv("USERPROFILE")) .. "/.vim/undodir"
 vim.opt.undofile = true
 
