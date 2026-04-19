@@ -34,7 +34,7 @@ vim.opt.list = true
 
 -- vim.opt.showmode = false
 
-vim.opt.exrc = true
+vim.opt.exrc = false
 
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true
