@@ -116,12 +116,10 @@ return {
           vim.keymap.set("n", "<leader>vws", vim.lsp.buf.workspace_symbol, opts)
           vim.keymap.set("n", "<leader>vd", vim.diagnostic.open_float, opts)
           vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
-
           vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-
           vim.keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format()
+            vim.lsp.buf.format({ bufnr = bufnr })
           end, opts)
 
           local filetype = vim.bo[bufnr].filetype
@@ -148,10 +146,13 @@ return {
         end
       end)
 
-      conform.setup {
-        lsp_format = "fallback",
-        quiet = false,
+      conform.setup({
+        default_format_opts = {
+          lsp_format = "fallback",
+          quiet = false,
+        },
         formatters_by_ft = {
+          go = { "gofmt" },
           lua = { "stylua" },
           python = { "ruff_format", "ruff_organize_imports" },
           javascript = { "prettier" },
@@ -166,14 +167,11 @@ return {
           yaml = { "prettier" },
         },
         formatters = {
-          lua = {
-            stylua = {
-              prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
-            }
+          stylua = {
+            prepend_args = { "--indent-type", "Spaces", "--indent-width", "2" },
           },
-
         },
-      }
+      })
     end,
   },
 }
