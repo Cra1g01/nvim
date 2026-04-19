@@ -7,13 +7,9 @@ return {
     dependencies = {
       { "folke/lazydev.nvim", ft = "lua" },
       "williamboman/mason.nvim",
-      "williamboman/mason-lspconfig.nvim",
       "saghen/blink.cmp",
-
       { "j-hui/fidget.nvim", opts = {} },
-
       "stevearc/conform.nvim",
-
       "b0o/SchemaStore.nvim",
     },
     config = function()
@@ -75,33 +71,20 @@ return {
         },
       }
 
-      local servers_to_install = vim.tbl_filter(function(key)
-        local t = servers[key]
-        if type(t) == "table" then
-          return not t.manual_install
-        else
-          return t
-        end
-      end, vim.tbl_keys(servers))
-
       require("mason").setup()
-      local ensure_installed = {
-        "stylua",
-        "lua_ls",
-      }
-
-      vim.list_extend(ensure_installed, servers_to_install)
 
       for name, config in pairs(servers) do
         if config == true then
           config = {}
         end
+
         config = vim.tbl_deep_extend("force", {}, {
           capabilities = capabilities,
         }, config)
 
         vim.lsp.config(name, config)
       end
+
       vim.lsp.enable(vim.tbl_keys(servers))
 
       local disable_semantic_tokens = {
