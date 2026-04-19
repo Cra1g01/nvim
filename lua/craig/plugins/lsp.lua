@@ -1,5 +1,5 @@
 vim.opt.completeopt = { "menu", "menuone", "noselect" }
-vim.opt.shortmess:append "c"
+vim.opt.shortmess:append("c")
 
 return {
   {
@@ -97,16 +97,19 @@ return {
         callback = function(args)
           local bufnr = args.buf
           local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
-          local opts = { buffer = 0 }
+          local opts = { buffer = bufnr }
 
           vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+
           vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-          local ts = require("telescope")
-          if ts then
+
+          local has_telescope = pcall(require, "telescope")
+          if has_telescope then
             vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
           else
             vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
           end
+
           vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
           vim.keymap.set("n", "gT", vim.lsp.buf.type_definition, opts)
           vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
@@ -135,12 +138,13 @@ return {
           border = "rounded",
         },
       })
+
       vim.keymap.set("n", "<leader>dl", function()
         local config = vim.diagnostic.config() or {}
         if config.virtual_text then
-          vim.diagnostic.config { virtual_text = false, virtual_lines = true }
+          vim.diagnostic.config({ virtual_text = false, virtual_lines = true })
         else
-          vim.diagnostic.config { virtual_text = true, virtual_lines = false }
+          vim.diagnostic.config({ virtual_text = true, virtual_lines = false })
         end
       end)
 
