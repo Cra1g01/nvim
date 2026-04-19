@@ -3,29 +3,30 @@
 This is my Lua Neovim config.
 
 ## Install
+
 Prerequisites:
- - neovim v0.9.1
- - ripgrep
-
-With the prerequisites installed, clone this repository into `~/.config`.
-
-Alternatively, clone my [.files](https://github.com/Cra1g01/.files) repo (recursively) and stow the files.
+- Neovim 0.12 or later
+- ripgrep
+- `tar`
+- `curl`
+- `tree-sitter-cli`
+- a C compiler
 
 ## Plugins
-Lazy.nvim is used to manage plugins.
 
-Plugins should install automatically.
+lazy.nvim is used to manage plugins. Plugins should install automatically on first launch.
 
-See [lazy.nvim](https://github.com/folke/lazy.nvim) for more info.
+This config uses the `main` branch of `nvim-treesitter`, so keep Neovim on 0.12+ and run `:TSUpdate` after plugin upgrades.
 
-## LSPs
-Mason manages LSPs, Linters, Formatters, etc.
+## LSPs and formatting
 
-lsp-zero is used for LSP integration.
+This config uses Neovim's built-in LSP (`vim.lsp.config()` / `vim.lsp.enable()`), `blink.cmp` for completion,
+Mason for external tooling, and Conform for formatting.
 
-A number of lsps are installed are installed by default. See `lua/craig/plugins/lsp.lua`.
+Language servers and formatters are **not** installed automatically. Install what you need with `:Mason`
+or provide the tools on your `$PATH`.
 
-See [mason.nvim](https://github.com/williamboman/mason.nvim) for more info.
+See `lua/craig/plugins/lsp.lua` for the configured servers and formatters.
 
 ---------------------
 Credit to ThePrimeagen and teej_dv for the bulk of my original config!
