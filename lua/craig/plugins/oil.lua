@@ -2,7 +2,7 @@ return {
   {
     "stevearc/oil.nvim",
     config = function()
-      require("oil").setup {
+      require("oil").setup({
         default_file_explorer = false,
         keymaps = {
           ["<C-h>"] = false,
@@ -11,7 +11,7 @@ return {
         view_options = {
           show_hidden = true,
         },
-      }
+      })
 
       vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
       vim.keymap.set("n", "<leader>-", require("oil").toggle_float)
