@@ -9,6 +9,7 @@ Prerequisites:
 - ripgrep
 - `tar`
 - `curl`
+- `make`
 - `tree-sitter-cli`
 - a C compiler
 
