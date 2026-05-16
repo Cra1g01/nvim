@@ -6,6 +6,7 @@ This is my Lua Neovim config.
 
 Prerequisites:
 - Neovim 0.12 or later
+- `git`
 - ripgrep
 - `tar`
 - `curl`
@@ -15,9 +16,10 @@ Prerequisites:
 
 ## Plugins
 
-lazy.nvim is used to manage plugins. Plugins should install automatically on first launch.
+Neovim's built-in `vim.pack` is used to manage plugins. Plugins should install automatically on first launch.
+Plugin revisions are tracked in `nvim-pack-lock.json`.
 
-This config uses the `main` branch of `nvim-treesitter`, so keep Neovim on 0.12+ and run `:TSUpdate` after plugin upgrades.
+This config uses the `main` branch of `nvim-treesitter`, so keep Neovim on 0.12+. A `vim.pack` hook runs `:TSUpdate` after plugin install/update.
 
 ## LSPs and formatting
 
