@@ -118,9 +118,6 @@ return {
           vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
           vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, opts)
           vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
-          vim.keymap.set("n", "<space>f", function()
-            vim.lsp.buf.format({ bufnr = bufnr })
-          end, opts)
 
           local filetype = vim.bo[bufnr].filetype
           if disable_semantic_tokens[filetype] then
