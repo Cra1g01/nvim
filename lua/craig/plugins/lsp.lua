@@ -71,6 +71,7 @@ return {
         },
 
         intelephense = true,
+        elixirls = true,
       }
 
       require("mason").setup()
