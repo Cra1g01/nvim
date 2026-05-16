@@ -69,6 +69,8 @@ return {
             },
           },
         },
+
+        intelephense = true,
       }
 
       require("mason").setup()
