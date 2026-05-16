@@ -27,6 +27,9 @@ return {
 
           if vim.treesitter.language.add(lang) then
             vim.treesitter.start(buf, lang)
+            if ft == "php" then
+              vim.bo[buf].syntax = "php"
+            end
             return
           end
 
@@ -35,6 +38,9 @@ return {
             task:wait(30000)
             if vim.treesitter.language.add(lang) then
               vim.treesitter.start(buf, lang)
+              if ft == "php" then
+                vim.bo[buf].syntax = "php"
+              end
             end
           end
         end,
