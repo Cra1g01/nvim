@@ -10,7 +10,21 @@ local servers = {
   air = true,
   r_language_server = true,
   bashls = true,
-  gopls = true,
+  gopls = {
+    settings = {
+      gopls = {
+        hints = {
+          assignVariableTypes = true,
+          compositeLiteralFields = true,
+          compositeLiteralTypes = true,
+          constantValues = true,
+          functionTypeParameters = true,
+          parameterNames = true,
+          rangeVariableTypes = true,
+        },
+      },
+    },
+  },
   lua_ls = {
     settings = {
       Lua = {
@@ -114,6 +128,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
     vim.keymap.set("n", "<space>cr", vim.lsp.buf.rename, opts)
     vim.keymap.set("n", "<space>ca", vim.lsp.buf.code_action, opts)
+
+    if client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint, bufnr) then
+      vim.keymap.set("n", "<leader>th", function()
+        vim.lsp.inlay_hint.enable(
+          not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }),
+          { bufnr = bufnr }
+        )
+      end, opts)
+    end
 
     local filetype = vim.bo[bufnr].filetype
     if disable_semantic_tokens[filetype] then
