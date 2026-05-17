@@ -97,9 +97,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 
-    local has_telescope = pcall(require, "telescope")
+    local has_telescope, telescope_builtin = pcall(require, "telescope.builtin")
     if has_telescope then
-      vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+      vim.keymap.set("n", "gr", telescope_builtin.lsp_references, opts)
+      vim.keymap.set("n", "<leader>vs", telescope_builtin.lsp_document_symbols, opts)
+      vim.keymap.set("n", "<leader>vD", telescope_builtin.diagnostics, opts)
     else
       vim.keymap.set("n", "gr", vim.lsp.buf.references, opts)
     end
