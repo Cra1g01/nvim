@@ -47,6 +47,7 @@ vim.pack.add({
   { src = gh("stevearc/oil.nvim") },
   { src = gh("nvim-lua/plenary.nvim") },
   { src = gh("nvim-telescope/telescope-fzf-native.nvim") },
+  { src = gh("nvim-telescope/telescope-ui-select.nvim") },
   { src = gh("nvim-telescope/telescope.nvim") },
   { src = gh("folke/trouble.nvim") },
   { src = gh("mbbill/undotree") },
